@@ -166,15 +166,7 @@ section {
     transform: translateY(-5px);
 }
 
-.card-image-placeholder {
-    height: 200px;
-    background-color: #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-    font-style: italic;
-}
+/* REMOVED .card-image-placeholder rule */
 
 .specialty-card h3 {
     padding: 15px 15px 5px 15px;
@@ -281,6 +273,8 @@ footer {
 
 .about-image-full {
     margin-top: 30px;
+    overflow: hidden; /* Ensures image respects border radius */
+    border-radius: 8px; /* Add rounded corners */
 }
 
 /* ======== CONTACT PAGE STYLES ======== */
@@ -461,6 +455,30 @@ footer {
     margin: 0;
 }
 
+/* ======== NEW IMAGE STYLES ======== */
+/* This new set of rules will control all your card images */
+.specialty-card img,
+.menu-item-card img,
+.about-image img,
+.about-image-full img {
+    width: 100%;    /* Make image fill the container's width */
+    display: block; /* Fixes potential small gaps under the image */
+    object-fit: cover; /* This is the key: it scales and crops the image, no squishing! */
+}
+
+/* Set consistent heights for different card types */
+.specialty-card img,
+.menu-item-card img {
+    height: 200px; 
+}
+
+.about-image img,
+.about-image-full img {
+    height: 300px;
+    border-radius: 8px; /* Added rounded corners to about images */
+}
+
+
 /* ======== RESPONSIVE STYLES ======== */
 
 /* Tablet Styles */
@@ -484,6 +502,12 @@ footer {
     
     .menu-card-container {
         gap: 20px;
+    }
+
+    /* Adjust image height for tablets if needed */
+    .specialty-card img,
+    .menu-item-card img {
+        height: 180px; 
     }
 }
 
@@ -651,6 +675,17 @@ footer {
     .menu-category h3 {
         font-size: 1.5rem;
     }
+
+    /* NEW Mobile Image Styles */
+    .specialty-card img,
+    .menu-item-card img {
+        height: 220px; /* A bit taller on mobile looks good */
+    }
+
+    .about-image img,
+    .about-image-full img {
+        height: 250px;
+    }
 }
 
 /* Small Mobile Styles */
@@ -692,9 +727,5 @@ footer {
         gap: 25px;
     }
     
-    .card-image-placeholder {
-        height: 150px;
-    }
+    /* REMOVED .card-image-placeholder height */
 }
-
-
